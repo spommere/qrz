@@ -77,7 +77,7 @@ timeon_f=$(/bin/date -d "${timeon:0:2}:${timeon:2:2}:${timeon:4:2}" "+%H:%M:%S")
 echo "$ncall $mode $band $freq $rsts $rstr qsodate=$qsodate qsodate_f=$qsodate_f $timeon_f $comment"
 
 # find email address
-curl -X GET 'https://xmldata.qrz.com/xml/current/?username=nh6sp&password=q0gomauiyw8SP%23%23' 1> ~/.req 2>/dev/null
+curl -X GET 'https://xmldata.qrz.com/xml/current/?username=NOCALL&passwordNOCALLPASSWD%23%23' 1> ~/.req 2>/dev/null
 
 str=`grep -c "non-subscriber" ~/.req 2>/dev/null`
 

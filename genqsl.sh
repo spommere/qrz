@@ -1,4 +1,4 @@
-#! /bin/ksh
+#! /bin/sh
 
 # two formats:
 # wsjt-x/z

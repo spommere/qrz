@@ -2,9 +2,9 @@
 
 # two formats:
 # wsjt-x/z
-#<call:6>SQ7LQT <gridsquare:0> <mode:3>FT8 <rst_sent:3>-08 <rst_rcvd:3>-18 <qso_date:8>20230910 <time_on:6>063600 <qso_date_off:8>20230910 <time_off:6>063715 <band:3>17m <freq:9>18.101500 <station_callsign:5>NH6SP <my_gridsquare:4>BK29 <tx_pwr:3>100 <comment:23>THX FOR QSO. 73 & ALOHA <eor>
+#<call:6>NOCALL <gridsquare:0> <mode:3>FT8 <rst_sent:3>-08 <rst_rcvd:3>-18 <qso_date:8>20230910 <time_on:6>063600 <qso_date_off:8>20230910 <time_off:6>063715 <band:3>17m <freq:9>18.101500 <station_callsign:5>MYCALL <my_gridsquare:4>BK29 <tx_pwr:3>100 <comment:23>THX FOR QSO. 73 & ALOHA <eor>
 # mshv
-#<STATION_CALLSIGN:5>NH6SP<MY_GRIDSQUARE:4>BK29<CALL:6>IZ2QGF<GRIDSQUARE:4>JN45<DISTANCE:5>12618<MODE:3>FT8<RST_SENT:3>-07<RST_RCVD:3>+00<QSO_DATE:8>20230910<TIME_ON:6>062800<QSO_DATE_OFF:8>20230910<TIME_OFF:6>062800<BAND:3>17M<FREQ:9>18.100000<EOR>
+#<STATION_CALLSIGN:5>MYCALL<MY_GRIDSQUARE:4>BK29<CALL:6>NOCALL<GRIDSQUARE:4>JN45<DISTANCE:5>12618<MODE:3>FT8<RST_SENT:3>-07<RST_RCVD:3>+00<QSO_DATE:8>20230910<TIME_ON:6>062800<QSO_DATE_OFF:8>20230910<TIME_OFF:6>062800<BAND:3>17M<FREQ:9>18.100000<EOR>
 
 if [ $# -ne 1 -a $# -ne 2 ]
 then
@@ -77,7 +77,7 @@ timeon_f=$(/bin/date -d "${timeon:0:2}:${timeon:2:2}:${timeon:4:2}" "+%H:%M:%S")
 echo "$ncall $mode $band $freq $rsts $rstr qsodate=$qsodate qsodate_f=$qsodate_f $timeon_f $comment"
 
 # find email address
-curl -X GET 'https://xmldata.qrz.com/xml/current/?username=NOCALL&passwordNOCALLPASSWD%23%23' 1> ~/.req 2>/dev/null
+curl -X GET 'https://xmldata.qrz.com/xml/current/?username=MYCALL&passwordNOCALLPASSWD%23%23' 1> ~/.req 2>/dev/null
 
 str=`grep -c "non-subscriber" ~/.req 2>/dev/null`
 

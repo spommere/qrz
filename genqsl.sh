@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # two formats:
 # wsjt-x/z
@@ -12,7 +12,20 @@ then
   exit 1
 fi
 
-adi=$HOME/wsjtx_log.adi
+cd ~
+qrz=~/qrz
+git clone https://github.com/spommere/qrz
+adi=~/wsjtx_log.adi
+qsl=~/qsl
+mkdir -p $qsl 2>/dev/null
+
+if [[ ! -f $qrz/QSL-compressed.jpg ]]
+then
+  echo "$qrz/QSL-compressed.jpg is missing"
+  exit 1
+fi
+
+
 font=22
 call=$1
 lineno=$2
@@ -101,7 +114,7 @@ col4=680
 loc_comment_row=680
 loc_comment_col=650
 
-convert $HOME/qsl/QSL-compressed.jpg  -pointsize $font -fill black \
+convert $qrz/QSL-compressed.jpg  -pointsize $font -fill black \
 -annotate +$col1+267 "$call" \
 -annotate +$col1+$row2 "$qsodate_f" \
 -annotate +$col1+$row3 "$timeon_f" \
@@ -111,15 +124,15 @@ convert $HOME/qsl/QSL-compressed.jpg  -pointsize $font -fill black \
 -annotate +$col2+$row3 "${rsts}" \
 -annotate +$col4+$row3 "${rstr}" \
 -fill white -annotate +$loc_comment_col+$loc_comment_row "${comment}" \
-$HOME/qsl/QSL-${call}.jpg
+$qsl/QSL-${call}.jpg
 
 if [ -z "$email" ]
 then
-  echo "QSL card for $call is in $HOME/qsl/QSL-${call}.jpg"
+  echo "QSL card for $call is in $qsl/QSL-${call}.jpg"
   echo "Note: No email address could be associated with $call"
   exit 3
 else
-  echo "QSL card for $call ($email) is in $HOME/qsl/QSL-${call}.jpg"
+  echo "QSL card for $call ($email) is in $qsl/QSL-${call}.jpg"
 fi
 
 exit 0

@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# spommere - 10/02/2024 error handling
+
 # two formats:
 # wsjt-x/z
 #<call:6>NOCALL <gridsquare:0> <mode:3>FT8 <rst_sent:3>-08 <rst_rcvd:3>-18 <qso_date:8>20230910 <time_on:6>063600 <qso_date_off:8>20230910 <time_off:6>063715 <band:3>17m <freq:9>18.101500 <station_callsign:5>MYCALL <my_gridsquare:4>BK29 <tx_pwr:3>100 <comment:23>THX FOR QSO. 73 & ALOHA <eor>

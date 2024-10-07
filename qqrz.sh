@@ -1,5 +1,10 @@
 #! /bin/bash
   
+if [[ $# -eq 0 ]]
+then
+  echo usage
+  exit 1
+fi
 # search for a particular posting on QRZ swapmeet page
 #export https_proxy=...
 #email=...
@@ -7,10 +12,11 @@ page=https://qrz.com/page/hotswap.html
 b=`basename $page`
 slp=5m
 
-srch[1]=V71
-srch[2]=D710
-srch[3]=FT891
-
+for ((i=1;i<=10;i++))
+do
+  srch[$i]=$1
+  shift
+done
 
 for ((i=1;i<=10;i++))
 do
@@ -28,7 +34,7 @@ done
 echo "about to seach for $srch"
 
 tmp=~/qqrz
-mkdir $tmp
+mkdir $tmp >/dev/null
 cd $tmp
 
 touch $tmp/qqrz.dat
